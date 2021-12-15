@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-const SignUp = ({ user, users, setUsers, isAuthenticated }) => {
+const SignUp = ({ user, users, setUsers }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password1, setPassword1] = useState('');
@@ -60,7 +60,7 @@ const SignUp = ({ user, users, setUsers, isAuthenticated }) => {
         setUsers([...users, { name, email, password: password1 }]);
     };
 
-    if (isAuthenticated(user)) {
+    if (!user || !user.email) {
         return <Redirect to="/" />;
     }
 

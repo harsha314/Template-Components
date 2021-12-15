@@ -95,8 +95,8 @@ const AuthenticatedNav = ({ setUser }) => {
     );
 };
 
-export const NavBar = ({ user, setUser, isAuthenticated }) => {
-    if (isAuthenticated(user)) {
+export const NavBar = ({ user, setUser }) => {
+    if (!user || !user.email) {
         return <AuthenticatedNav setUser={setUser} />;
     }
 
